@@ -20,12 +20,20 @@ title: //'foo',
 
 
 // ************JSON,API Discussions
-document.getElementById('sub').addEventListener('click', function () {
+document.getElementById('sub').addEventListener('click', () => {
     const title = document.getElementById('title').value;
     const bodyContent = document.getElementById('bodyContent').value;
     const post = { title: title, body: bodyContent };
     postToServer(post);
+    erase();
 });
+function erase() {
+    const title = document.getElementById('title');
+    const bodyContent = document.getElementById('bodyContent');
+    title.value = "";
+    bodyContent.value = "";
+};
+
 function postToServer(post) {
     //requesting server for data
     fetch('https://jsonplaceholder.typicode.com/posts', {
