@@ -1,43 +1,50 @@
-// Just for example
-const hasMeeting = false;
+const status = true;
+const marks = 80;
 
-const meeting = new Promise((resolve, reject) => {
-    if (!hasMeeting) {
-        const meetingDetails = {
-            name: "technical meeting",
-            location: "Google meet",
-            time: "10.00 PM"
-        };
-        resolve(meetingDetails);
-    } else {
-        reject(new Error("meeting already scheduled"));
-    }
-});
+function enroll() {
+    console.log(`course enrollment is in processing..`)
 
-const addToCalender = (meetingDetails) => {
-    const calender = `${meetingDetails.name} has been schedule on ${meetingDetails.location} at ${meetingDetails.time}`;
-    return Promise.resolve(calender);
+    const promise = new Promise((res, rej) => {
+        setTimeout(() => {
+            if (status) {
+                res();
+            } else {
+                rej("payment failed!");
+            }
+        }, 2000);
+    });
+    return promise;
 };
 
-// meeting
-//     .then(addToCalender)
-//     .then((res) => {
-//         console.log(res);
-//     })
-//     .catch((err) => {
-//         console.log(err.message)
-//     });
+function progress() {
+    console.log(`course is in progress`)
 
+    const promise = new Promise((res, rej) => {
+        setTimeout(() => {
+            if (marks >= 80) {
+                res();
+            } else {
+                rej(`You wont't get enough marks to get certificate!`);
+            }
+        }, 2000);;
+    });
+    return promise;
+};
+function getCertificate() {
+    console.log(`Certificate is in processing`);
 
-async function myMeeting() {
+    const promise =  Promise.resolve(`Congratulations! you complete the course with 80+ marks!!`);
+    return promise
+};
+
+async function course() {
     try {
-        const meetingDetails = await meeting;
-        const calender = await addToCalender(meetingDetails);
-        console.log(calender);
-
-    } catch {
-        console.log(`something wrong happened`)
+        await enroll();
+        await progress();
+        const msg = await getCertificate()
+        console.log(msg);
+    } catch (error) {
+        console.log(error)
     }
-
-};
-myMeeting(); 
+}
+course();

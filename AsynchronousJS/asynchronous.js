@@ -5,7 +5,7 @@ const takeOrder = (customer, callback) => {
     callback(customer);
 }
 
-const processOrder = (customer, callback) => {
+const processOrder = (customer) => {
     console.log(`processing order for ${customer}`);
 
     setTimeout(() => {
