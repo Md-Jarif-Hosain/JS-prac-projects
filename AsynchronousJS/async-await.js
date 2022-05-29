@@ -1,6 +1,48 @@
 const status = true;
 const marks = 80;
 
+
+// call the Asynchronous functions with callback method 
+function enroll(callback) {
+    console.log(`course enrollment is in processing..`)
+
+    setTimeout(() => {
+        if (status) {
+            callback();
+        } else {
+            console.log("payment failed!");
+        }
+    }, 2000);
+};
+
+function progress(callback) {
+    console.log(`course is in progress`)
+
+    setTimeout(() => {
+        if (marks >= 80) {
+            callback();
+        } else {
+            console.log(`You wont't get enough marks to get certificate!`);
+        }
+    }, 2000);
+};
+function getCertificate() {
+    console.log(`Certificate is in processing`);
+    setTimeout(() => {
+        console.log(`Congratulations!! You have done the course`);
+    }, 2000);
+};
+
+// enroll(() => {
+//     progress(() => {
+//         getCertificate();
+//     });
+// });
+
+
+
+
+// call the Asynchronous functions with  Promises & Async-await method
 function enroll() {
     console.log(`course enrollment is in processing..`)
 
@@ -33,7 +75,7 @@ function progress() {
 function getCertificate() {
     console.log(`Certificate is in processing`);
 
-    const promise =  Promise.resolve(`Congratulations! you complete the course with 80+ marks!!`);
+    const promise = Promise.resolve(`Congratulations! you complete the course with 80+ marks!!`);
     return promise
 };
 
@@ -47,4 +89,4 @@ async function course() {
         console.log(error)
     }
 }
-course();
+// course();
