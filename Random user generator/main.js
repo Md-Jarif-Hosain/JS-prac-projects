@@ -24,4 +24,7 @@ function dataLOader(number) {
                 userContainer.appendChild(p);
             }
         })
+        .catch(err => {
+            document.write(err);
+        });
 };
