@@ -33,11 +33,11 @@ function getCertificate() {
     }, 2000);
 };
 
-// enroll(() => {
-//     progress(() => {
-//         getCertificate();
-//     });
-// });
+enroll(() => {
+    progress(() => {
+        getCertificate();
+    });
+});
 
 
 
