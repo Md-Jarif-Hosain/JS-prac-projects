@@ -1,54 +1,59 @@
-// Just for example
-const hasMeeting = false;
+/** @format */
 
-const meeting = new Promise((resolve, reject) => {
-    if (!hasMeeting) {
-        const meetingDetails = {
-            name: "technical meeting",
-            location: "Google meet",
-            time: "10.00 PM"
-        };
-        resolve(meetingDetails);
-    } else {
-        reject(new Error("meeting already scheduled"));
-    }
-});
+// // Just for example
+// const hasMeeting = false;
 
+// const meeting = new Promise((resolve, reject) => {
+//     if (!hasMeeting) {
+//         const meetingDetails = {
+//             name: "technical meeting",
+//             location: "Google meet",
+//             time: "10.00 PM"
+//         };
+//         resolve(meetingDetails);
+//     } else {
+//         reject(new Error("meeting already scheduled"));
+//     }
+// });
 
-const addToCalender = (meetingDetails) => {
-    const calender = `${meetingDetails.name} has been schedule on ${meetingDetails.location} at ${meetingDetails.time}`;
-    return Promise.resolve(calender);
-};
+// const addToCalender = (meetingDetails) => {
+//     const calender = `${meetingDetails.name} has been schedule on ${meetingDetails.location} at ${meetingDetails.time}`;
+//     return Promise.resolve(calender);
+// };
 
+// meeting
+//     .then(addToCalender)
+//     .then((res) => {
+//         console.log(res);
+//     })
+//     .catch((err) => {
+//         console.log(err.message)
+//     });
 
+// // Another Example
+// const promise1 = Promise.resolve(`promise 1 resolved`);
 
+// const promise2 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(`promise 2 resolve`);
+//     }, 2000);
+// });
+// // call all promise together
+// Promise.all([promise1, promise2])
+//     .then((res) => {
+//         console.log(res);
+//     });
 
-meeting
-    .then(addToCalender)
-    .then((res) => {
-        console.log(res);
-    })
-    .catch((err) => {
-        console.log(err.message)
-    });
+// Promise.race([promise1, promise2])//returns which promise resolve first
+//     .then((res) => {
+//         console.log(res);
+//     });
 
+let arr = [10, 50, 5, 40, 35];
+let arr2 = [10, 50, 5, 40, 35];
 
-// Another Example
-const promise1 = Promise.resolve(`promise 1 resolved`);
+let ascending = arr.sort((a, b) => a - b);
+let descending = arr2.sort((a, b) => b - a);
 
-const promise2 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(`promise 2 resolve`);
-    }, 2000);
-});
-// call all promise together
-Promise.all([promise1, promise2])
-    .then((res) => {
-        console.log(res);
-    });
-
-
-Promise.race([promise1, promise2])//returns which promise resolve first
-    .then((res) => {
-        console.log(res);
-    });
+console.log(ascending);
+console.log(descending);
